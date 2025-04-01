@@ -32,3 +32,6 @@ Route::get('indice', function () {
 Route::get('superKompas', function () {
     return view('superKompas');
 });
+
+Route::resource('persona', App\Http\Controllers\PersonaController::class);
+
