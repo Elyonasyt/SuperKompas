@@ -12,9 +12,8 @@ class PersonaController extends Controller
      */
     public function index()
     {
-        $persona=persona::all();
-
-        return view('persona.index',compact("persona"));//
+        $personas = Persona::all();
+        return view('personas.index', compact('personas'));
     }
 
     /**
@@ -22,7 +21,7 @@ class PersonaController extends Controller
      */
     public function create()
     {
-        //
+        return "HOLA DESDE CREATE";//
     }
 
     /**
@@ -30,7 +29,7 @@ class PersonaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return "HOLA DESDE CREATE";//
     }
 
     /**
@@ -38,7 +37,7 @@ class PersonaController extends Controller
      */
     public function show(persona $persona)
     {
-        //
+        return "HOLA DESDE CREATE";//
     }
 
     /**
@@ -46,7 +45,7 @@ class PersonaController extends Controller
      */
     public function edit(persona $persona)
     {
-        //
+        return "HOLA DESDE CREATE";//
     }
 
     /**
@@ -54,7 +53,7 @@ class PersonaController extends Controller
      */
     public function update(Request $request, persona $persona)
     {
-        //
+        return "HOLA DESDE CREATE";//
     }
 
     /**
@@ -62,6 +61,6 @@ class PersonaController extends Controller
      */
     public function destroy(persona $persona)
     {
-        //
+        return "HOLA DESDE CREATE";//
     }
 }

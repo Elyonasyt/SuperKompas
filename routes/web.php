@@ -33,5 +33,8 @@ Route::get('superKompas', function () {
     return view('superKompas');
 });
 
-Route::resource('persona', App\Http\Controllers\PersonaController::class);
+use App\Http\Controllers\PersonaController;
 
+Route::get('/personas', [PersonaController::class, 'index']);
+
+Route::get('/personas', [App\Http\Controllers\PersonaController::class, 'index']);
