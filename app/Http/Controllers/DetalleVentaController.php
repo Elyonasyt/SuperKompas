@@ -12,7 +12,8 @@ class DetalleVentaController extends Controller
      */
     public function index()
     {
-        //
+        $detalleVentas = DetalleVenta::with('producto')->get();
+        return view('detalle_venta.index', compact('detalleVentas'));
     }
 
     /**

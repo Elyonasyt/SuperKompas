@@ -1,34 +1,37 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tabla Inventario</title>
-    <style>
-        table {
-            width: 80%;
-            border-collapse: collapse;
-            margin: 20px auto;
-        }
-        th, td {
-            border: 1px solid black;
-            padding: 10px;
-            text-align: center;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-    </style>
-</head>
-<body>
-    <h2>Lista de Personas</h2>
-    <table>
+@extends("layouts.app")
+@section("content")
+
+    <h1 class="alert alert-info">Lista de Inventario</h1>
+    <a href="{{ route('inventario.create') }}" class="btn btn-success">Agregar Producto</a>
+
+    <table class="table table-bordered border-primary">
+        <thead>
         <tr>
-            <th>ID_Inventario</th>
-            <th>ID_Producto</th>
-            <th>Cantidad_Disponible</th>
-            <th>Fecha_Actualizacion</th>
+            <th>ID</th>
+            <th>ID Producto</th>
+            <th>Cantidad Disponible</th>
+            <th>Fecha Actualización</th>
+            <th>Acciones</th>
         </tr>
+        </thead>
+        <tbody>
+        @foreach($inventarios as $item)
+            <tr>
+                <td>{{$item->id}}</td>
+                <td>{{$item->id_producto}}</td>
+                <td>{{$item->cantidad_disponible}}</td>
+                <td>{{$item->fecha_actualizacion}}</td>
+                <td>
+                    <a href="{{ route('inventario.edit', $item->id) }}" class="btn btn-warning">Editar</a>
+                    <form action="{{ route('inventario.destroy', $item->id) }}" method="POST" style="display:inline;">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                    </form>
+                </td>
+            </tr>
+        @endforeach
+        </tbody>
     </table>
-</body>
-</html>
+
+@endsection

@@ -1,34 +1,37 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tabla Ventas</title>
-    <style>
-        table {
-            width: 80%;
-            border-collapse: collapse;
-            margin: 20px auto;
-        }
-        th, td {
-            border: 1px solid black;
-            padding: 10px;
-            text-align: center;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-    </style>
-</head>
-<body>
-    <h2>Lista de Personas</h2>
-    <table>
+@extends("layouts.app")
+@section("content")
+
+    <h1 class="alert alert-info">Lista de Ventas</h1>
+    <a href="{{ route('ventas.create') }}" class="btn btn-success">Agregar Venta</a>
+
+    <table class="table table-bordered border-primary">
+        <thead>
         <tr>
-            <th>ID_Venta</th>
-            <th>ID_Cliente</th>
-            <th>Fecha_Venta</th>
-            <th>Total_Venta</th>
+            <th>ID</th>
+            <th>ID Cliente</th>
+            <th>Fecha Venta</th>
+            <th>Total Venta</th>
+            <th>Acciones</th>
         </tr>
+        </thead>
+        <tbody>
+        @foreach($ventas as $venta)
+            <tr>
+                <td>{{$venta->id}}</td>
+                <td>{{$venta->id_cliente}}</td>
+                <td>{{$venta->fecha_venta}}</td>
+                <td>{{$venta->total_venta}}</td>
+                <td>
+                    <a href="{{ route('ventas.edit', $venta->id) }}" class="btn btn-warning">Editar</a>
+                    <form action="{{ route('ventas.destroy', $venta->id) }}" method="POST" style="display:inline;">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                    </form>
+                </td>
+            </tr>
+        @endforeach
+        </tbody>
     </table>
-</body>
-</html>
+
+@endsection

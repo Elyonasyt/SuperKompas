@@ -1,32 +1,37 @@
-clientes<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tabla de Clientes</title>
-    <style>
-        table {
-            width: 80%;
-            border-collapse: collapse;
-            margin: 20px auto;
-        }
-        th, td {
-            border: 1px solid black;
-            padding: 10px;
-            text-align: center;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-    </style>
-</head>
-<body>
-    <h2>Lista de Clientes</h2>
-    <table>
+@extends("layouts.app")
+@section("content")
+
+    <h1 class="alert alert-info">Lista de Clientes</h1>
+    <a href="{{ route('clientes.create') }}" class="btn btn-success">Agregar Cliente</a>
+
+    <table class="table table-bordered border-primary">
+        <thead>
         <tr>
-            <th>ID cliente</th>
-            <th>ID persona</th>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Email</th>
+            <th>Teléfono</th>
+            <th>Acciones</th>
         </tr>
+        </thead>
+        <tbody>
+        @foreach($clientes as $cliente)
+            <tr>
+                <td>{{$cliente->id}}</td>
+                <td>{{$cliente->nombre}}</td>
+                <td>{{$cliente->email}}</td>
+                <td>{{$cliente->telefono}}</td>
+                <td>
+                    <a href="{{ route('clientes.edit', $cliente->id) }}" class="btn btn-warning">Editar</a>
+                    <form action="{{ route('clientes.destroy', $cliente->id) }}" method="POST" style="display:inline;">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                    </form>
+                </td>
+            </tr>
+        @endforeach
+        </tbody>
     </table>
-</body>
-</html>
+
+@endsection

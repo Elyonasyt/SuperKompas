@@ -34,7 +34,39 @@ Route::get('superKompas', function () {
 });
 
 use App\Http\Controllers\PersonaController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\VentaController;
+use App\Http\Controllers\DetalleVentaController;
+use App\Http\Controllers\InventarioController;
+use App\Http\Controllers\ProductoController;
+use App\Http\Controllers\ProveedorController;
+use App\Http\Controllers\SessionController;
 
-Route::get('/personas', [PersonaController::class, 'index']);
+// Rutas para el controlador de Personas
+Route::resource('personas', PersonaController::class);
 
-Route::get('/personas', [App\Http\Controllers\PersonaController::class, 'index']);
+// Rutas para el controlador de Usuarios (UserController)
+Route::resource('users', UserController::class);
+
+// Rutas para el controlador de Clientes
+Route::resource('clientes', ClienteController::class);
+
+// Rutas para el controlador de Ventas
+Route::resource('ventas', VentaController::class);
+
+// Rutas para el controlador de Detalle de Venta
+Route::resource('detalle_venta', DetalleVentaController::class);
+
+// Rutas para el controlador de Inventarios
+Route::resource('inventarios', InventarioController::class);
+
+// Rutas para el controlador de Productos
+Route::resource('productos', ProductoController::class);
+
+// Rutas para el controlador de Proveedores
+Route::resource('proveedores', ProveedorController::class);
+
+// Rutas para el controlador de Sessions
+Route::resource('sessions', SessionController::class);
+

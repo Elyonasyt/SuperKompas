@@ -1,33 +1,37 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tabla Proveedores</title>
-    <style>
-        table {
-            width: 80%;
-            border-collapse: collapse;
-            margin: 20px auto;
-        }
-        th, td {
-            border: 1px solid black;
-            padding: 10px;
-            text-align: center;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-    </style>
-</head>
-<body>
-    <h2>Lista de Proveedores</h2>
-    <table>
+@extends("layouts.app")
+@section("content")
+
+    <h1 class="alert alert-info">Lista de Proveedores</h1>
+    <a href="{{ route('proveedores.create') }}" class="btn btn-success">Agregar Proveedor</a>
+
+    <table class="table table-bordered border-primary">
+        <thead>
         <tr>
-            <th>ID_Proveedor</th>
-            <th>ID_Persona</th>
-            <th>Nombre_Proveedor</th>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Contacto</th>
+            <th>Teléfono</th>
+            <th>Acciones</th>
         </tr>
+        </thead>
+        <tbody>
+        @foreach($proveedores as $proveedor)
+            <tr>
+                <td>{{$proveedor->id}}</td>
+                <td>{{$proveedor->nombre}}</td>
+                <td>{{$proveedor->contacto}}</td>
+                <td>{{$proveedor->telefono}}</td>
+                <td>
+                    <a href="{{ route('proveedores.edit', $proveedor->id) }}" class="btn btn-warning">Editar</a>
+                    <form action="{{ route('proveedores.destroy', $proveedor->id) }}" method="POST" style="display:inline;">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                    </form>
+                </td>
+            </tr>
+        @endforeach
+        </tbody>
     </table>
-</body>
-</html>
+
+@endsection

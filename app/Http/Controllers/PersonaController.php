@@ -12,8 +12,8 @@ class PersonaController extends Controller
      */
     public function index()
     {
-        $personas = Persona::all();
-        return view('personas.index', compact('personas'));
+        $personas = Persona::all(); // Obtener todas las personas
+        return view('personas.index', compact('personas')); // Enviar datos a la vista
     }
 
     /**
