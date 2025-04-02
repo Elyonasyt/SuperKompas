@@ -2,35 +2,38 @@
 @section("content")
 
     <h1 class="alert alert-info">Lista de Productos</h1>
-    <a href="{{ route('productos.create') }}" class="btn btn-success">Agregar Producto</a>
-
     <table class="table table-bordered border-primary">
         <thead>
         <tr>
-            <th>ID</th>
-            <th>Nombre</th>
+            <th>Nombre Producto</th>
+            <th>Descripción</th>
             <th>Precio</th>
-            <th>Stock</th>
-            <th>Acciones</th>
+            <th>Unidades en Stock</th>
+            <th>ID Proveedor</th>
         </tr>
         </thead>
         <tbody>
-        @foreach($productos as $producto)
-            <tr>
-                <td>{{$producto->id}}</td>
-                <td>{{$producto->nombre}}</td>
-                <td>{{$producto->precio}}</td>
-                <td>{{$producto->stock}}</td>
-                <td>
-                    <a href="{{ route('productos.edit', $producto->id) }}" class="btn btn-warning">Editar</a>
-                    <form action="{{ route('productos.destroy', $producto->id) }}" method="POST" style="display:inline;">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger">Eliminar</button>
-                    </form>
-                </td>
-            </tr>
-        @endforeach
+        <tr>
+            <td>Leche Entera</td>
+            <td>1 litro de leche entera</td>
+            <td>$20.50</td>
+            <td>100</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>Pan Blanco</td>
+            <td>Pan de caja 500g</td>
+            <td>$35.00</td>
+            <td>50</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>Arroz 1kg</td>
+            <td>Paquete de arroz blanco</td>
+            <td>$25.75</td>
+            <td>80</td>
+            <td>1</td>
+        </tr>
         </tbody>
     </table>
 
