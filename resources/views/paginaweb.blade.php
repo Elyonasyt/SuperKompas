@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Super Kompras Valle de Bravo</title>
 
-    
+
     <link rel="icon" href="images/favicon.ico" type="image/x-icon">
 
- 
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css">
 
     <style>
@@ -109,8 +109,8 @@
         }
 
         .swiper-slide {
-            flex: 0 0 auto;  
-            width: 30%;  
+            flex: 0 0 auto;
+            width: 30%;
             padding: 10px;
             box-sizing: border-box;
         }
@@ -129,8 +129,8 @@
         }
 
         .product-img {
-            width: 100%;  
-            max-width: 120px;  
+            width: 100%;
+            max-width: 120px;
             height: auto;
             object-fit: contain;
             border-radius: 8px;
@@ -355,7 +355,9 @@
             </div>
                    <div id="auth-buttons">
             <button class="btn register-btn" onclick="window.location.href='registro'">Registrarse</button>
+
             <button class="btn cesion-btn" onclick="window.location.href='cesion'">Iniciar sesión</button>
+                       <button class="btn superkompas-btn" onclick="window.location.href='superKompas'">Registro producto</button>
         </div>
 
         </div>
@@ -372,7 +374,7 @@
                 </div>
             </div>
 
-            
+
             <div class="swiper-pagination"></div>
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>
@@ -424,7 +426,7 @@
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>
         </div>
-        
+
             <footer>
         <div class="footer-container">
             <div class="footer-logo">
