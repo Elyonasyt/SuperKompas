@@ -67,6 +67,7 @@ Route::resource('productos', ProductoController::class);
 // Rutas para el controlador de Proveedores
 Route::resource('proveedores', ProveedorController::class);
 
-// Rutas para el controlador de Sessions
-Route::resource('sessions', SessionController::class);
+Route::get('registos', function () {
+    return view('registos');
+});
 

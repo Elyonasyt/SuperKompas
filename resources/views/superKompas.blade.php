@@ -91,6 +91,8 @@
         <button onclick="window.location.href='index.html'">Ir al Inicio</button>
         <button class="btn register-btn" onclick="window.location.href='registro'">Registrarse</button>
         <button class="btn cesion-btn" onclick="window.location.href='cesion'">Iniciar sesión</button>
+        <button class="btn registos-btn" onclick="window.location.href='registos'">Registros</button>
+
     </header>
 
     <div class="container">
