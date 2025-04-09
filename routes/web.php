@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProductosController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -56,16 +57,16 @@ Route::resource('clientes', ClienteController::class);
 Route::resource('ventas', VentaController::class);
 
 // Rutas para el controlador de Detalle de Venta
-Route::resource('detalle_venta', DetalleVentaController::class);
+Route::resource('detalle_ventas', DetalleVentaController::class);
 
 // Rutas para el controlador de Inventarios
 Route::resource('inventarios', InventarioController::class);
 
 // Rutas para el controlador de Productos
-Route::resource('productos', ProductoController::class);
+Route::resource('productos', ProductosController::class);
 
 // Rutas para el controlador de Proveedores
-Route::resource('proveedores', ProveedorController::class);
+Route::resource('proveedore', \App\Http\Controllers\ProveedoreController::class);
 
 Route::get('registos', function () {
     return view('registos');

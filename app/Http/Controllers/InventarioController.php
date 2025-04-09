@@ -13,7 +13,7 @@ class InventarioController extends Controller
     public function index()
     {
         $inventarios = Inventario::all();
-        return view('inventarios.index', compact('inventarios'));
+        return view('inventario.index', compact('inventarios'));
     }
 
     /**

@@ -25,35 +25,18 @@
             <th>Correo</th>
             <th>Dirección</th>
         </tr>
-        </thead>
         <tbody>
-        <tr>
-            <td>1</td>
-            <td>Juan</td>
-            <td>Perez</td>
-            <td>Gomez</td>
-            <td>5551234567</td>
-            <td>juan.perez@example.com</td>
-            <td>Calle Falsa 123, CDMX</td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td>Maria</td>
-            <td>Lopez</td>
-            <td>Hernandez</td>
-            <td>5559876543</td>
-            <td>maria.lopez@example.com</td>
-            <td>Av. Reforma 456, CDMX</td>
-        </tr>
-        <tr>
-            <td>3</td>
-            <td>Carlos</td>
-            <td>Rodriguez</td>
-            <td>Diaz</td>
-            <td>5557418529</td>
-            <td>carlos.rod@example.com</td>
-            <td>Blvd. Principal 789, CDMX</td>
-        </tr>
+        @foreach($personas as $personas)
+            <tr>
+                <td>{{$personas->ID_Persona }}</td>
+                <td>{{$personas->Nombre }}</td>
+                <td>{{$personas->Nombre }}</td>
+                <td>{{$personas->Apellido_Materno }}</td>
+                <th>{{$personas->Telefono}}</th>
+                <th>{{$personas->Correo}}</th>
+                <th>{{$personas->Direccion}}</th>
+            </tr>
+        @endforeach
         </tbody>
     </table>
 @endsection

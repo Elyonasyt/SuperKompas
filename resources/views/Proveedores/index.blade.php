@@ -5,16 +5,23 @@
     <table class="table table-bordered border-primary">
         <thead>
         <tr>
-            <th>ID Persona</th>
-            <th>Nombre Proveedor</th>
+            <th>ID_Proveedor</th>
+            <th>ID_Persona</th>
+            <th>Nombre_Proveedor</th>
+
         </tr>
         </thead>
+
         <tbody>
-        <tr>
-            <td>3</td>
-            <td>Distribuidora Alimentos S.A.</td>
-        </tr>
+        @foreach($proveedores as $proveedores)
+            <tr>
+                <td>{{$proveedores->ID_Proveedor }}</td>
+                <td>{{$proveedores->ID_Persona }}</td>
+                <td>{{$proveedores->Nombre_Proveedor }}</td>
+            </tr>
+        @endforeach
         </tbody>
+
     </table>
 
 @endsection

@@ -6,15 +6,17 @@
         <thead>
         <tr>
             <th>ID Persona</th>
+            <th>ID Cliente</th>
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td>1</td>
-        </tr>
-        <tr>
-            <td>2</td>
-        </tr>
+        @foreach($clientes as $cliente)
+            <tr>
+                <td>{{$cliente->ID_Cliente}}</td>
+                <td>{{$cliente->ID_Persona }}</td>
+
+            </tr>
+        @endforeach
         </tbody>
     </table>
 
