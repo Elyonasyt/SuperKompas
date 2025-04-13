@@ -21,7 +21,7 @@ class ClienteController extends Controller
      */
     public function create()
     {
-        //
+        return view('clientes.create');//
     }
 
     /**
@@ -29,7 +29,10 @@ class ClienteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        cliente::create([
+            "id_persona" => $request->id_persona,
+        ]);
+        return redirect()->route('cliente.index');//
     }
 
     /**
