@@ -29,11 +29,13 @@ class ClienteController extends Controller
      */
     public function store(Request $request)
     {
-        cliente::create([
-            "id_persona" => $request->id_persona,
+        cliente::create([  // corregido: modelo en minúscula
+            'id_persona' => $request->id_persona,
         ]);
-        return redirect()->route('cliente.index');//
+
+        return redirect()->route('clientes.index'); // corregido: nombre de ruta en plural
     }
+
 
     /**
      * Display the specified resource.

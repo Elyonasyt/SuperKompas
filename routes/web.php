@@ -59,6 +59,7 @@ Route::resource('ventas', VentaController::class);
 // Rutas para el controlador de Detalle de Venta
 Route::resource('detalle_ventas', DetalleVentaController::class);
 
+
 // Rutas para el controlador de Inventarios
 Route::resource('inventarios', InventarioController::class);
 

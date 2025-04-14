@@ -1,24 +1,30 @@
-@extends("layouts.app")
-@section("content")
+@extends('layouts.app')
+@section('content')
 
-    <h1 class="alert alert-info">Lista de Inventario</h1>
-    <table class="table table-bordered border-primary">
-        <thead>
-        <tr>
-            <th>ID_Inventario</th>
-            <th>ID_Producto</th>
-            <th>Cantidad_Disponible</th>
-            <th>Fecha_Actualizacion</th>
-        </tr>
-        <tbody>
-        @foreach($inventarios as $inventarios )
+    <div class="container">
+        <h1 class="alert alert-info">Inventario</h1>
+        <a href="{{ route('inventarios.create') }}" class="btn btn-primary mb-3">Agregar Inventario</a>
+
+        <table class="table table-bordered border-primary">
+            <thead>
             <tr>
-                <td>{{$inventarios->ID_Inventario }}</td>
-                <td>{{$inventarios->ID_Producto }}</td>
-                <td>{{$inventarios->Cantidad_Disponible }}</td>
-                <td>{{$inventarios->Fecha_Actualizacion }}</td>
+                <th>ID Inventario</th>
+                <th>ID Producto</th>
+                <th>Cantidad Disponible</th>
+                <th>Fecha Actualización</th>
             </tr>
-        @endforeach
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+            @foreach($inventarios as $inventario)
+                <tr>
+                    <td>{{ $inventario->ID_Inventario }}</td>
+                    <td>{{ $inventario->ID_Producto }}</td>
+                    <td>{{ $inventario->Cantidad_Disponible }}</td>
+                    <td>{{ $inventario->Fecha_Actualizacion }}</td>
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
+    </div>
+
 @endsection

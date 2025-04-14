@@ -2,65 +2,66 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\venta;
+use App\Models\Venta;
 use Illuminate\Http\Request;
 
 class VentaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         $ventas = Venta::all();
         return view('ventas.index', compact('ventas'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        return view('ventas.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        // Validación de los datos
+        $request->validate([
+            'ID_Cliente' => 'required|integer',
+            'Fecha_Venta' => 'required|date',
+            'Total_Venta' => 'required|numeric',
+        ]);
+
+        // Crear una nueva venta
+        venta::create([
+            'ID_Cliente' => $request->ID_Cliente,
+            'Fecha_Venta' => $request->Fecha_Venta,
+            'Total_Venta' => $request->Total_Venta,
+        ]);
+
+        return redirect()->route('ventas.index')->with('success', 'Venta creada exitosamente');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(venta $venta)
+    public function edit(Venta $venta)
     {
-        //
+        return view('ventas.edit', compact('venta'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(venta $venta)
+    public function update(Request $request, Venta $venta)
     {
-        //
+        $request->validate([
+            'ID_Cliente' => 'required|integer',
+            'Fecha_Venta' => 'required|date',
+            'Total_Venta' => 'required|numeric',
+        ]);
+
+        $venta->update([
+            'ID_Cliente' => $request->ID_Cliente,
+            'Fecha_Venta' => $request->Fecha_Venta,
+            'Total_Venta' => $request->Total_Venta,
+        ]);
+
+        return redirect()->route('ventas.index')->with('success', 'Venta actualizada exitosamente');
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, venta $venta)
+    public function destroy(Venta $venta)
     {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(venta $venta)
-    {
-        //
+        $venta->delete();
+        return redirect()->route('ventas.index')->with('success', 'Venta eliminada exitosamente');
     }
 }

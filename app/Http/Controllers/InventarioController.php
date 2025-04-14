@@ -1,35 +1,32 @@
 <?php
 
-namespace App\Http\Controllers;
+    namespace App\Http\Controllers;
 
-use App\Models\inventario;
-use Illuminate\Http\Request;
+    use App\Models\Inventario;
+    use Illuminate\Http\Request;
 
-class InventarioController extends Controller
-{
-    /**
-     * Display a listing of the resource.
-     */
+    class InventarioController extends Controller
+    {
     public function index()
     {
-        $inventarios = Inventario::all();
-        return view('inventario.index', compact('inventarios'));
+    $inventarios = Inventario::all();
+    return view('inventario.index', compact('inventarios'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+    return view('inventario.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+    Inventario::create([
+    'ID_Producto' => $request->ID_Producto,
+    'Cantidad_Disponible' => $request->Cantidad_Disponible,
+    'Fecha_Actualizacion' => $request->Fecha_Actualizacion,
+    ]);
+
+    return redirect()->route('inventarios.index');
     }
 
     /**

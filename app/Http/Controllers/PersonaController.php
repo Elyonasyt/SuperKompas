@@ -12,24 +12,33 @@ class PersonaController extends Controller
      */
     public function index()
     {
-        $personas = persona::all();
-        return view('personas.index',compact("personas"));
+        // Obtiene todas las personas
+        $personas = Persona::all();
+        return view('personas.index', compact('personas'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        return "HOLA DESDE CREATE";//
+        // Retorna el formulario para crear una nueva persona
+        return view('personas.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        return "HOLA DESDE CREATE";//
+        // Validación de los datos
+        $request->validate([
+            'Nombre' => 'required',
+            'Apellido_Paterno' => 'required',
+            'Apellido_Materno' => 'required',
+            'Telefono' => 'nullable',
+            'Correo' => 'nullable|email',
+            'Direccion' => 'nullable',
+        ]);
+
+        // Guardar una nueva persona en la base de datos
+        Persona::create($request->all());
+
+        return redirect()->route('personas.index');
     }
 
     /**

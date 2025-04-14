@@ -2,35 +2,34 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\cliente;
 use App\Models\detalle_venta;
+use App\Models\DetalleVenta; // CORREGIDO: con mayúscula y bien importado
 use Illuminate\Http\Request;
 
 class DetalleVentaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        $detalle_ventas = detalle_venta::all(); ;
-        return view('detalle_venta.index',compact("detalle_ventas"));
+        $detalle_ventas = detalle_venta::all();
+        return view('detalle_venta.index', compact("detalle_ventas"));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        return view('detalle_venta.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+
     public function store(Request $request)
     {
-        //
+        detalle_venta::create([
+            'ID_Venta' => $request->ID_Venta,
+            'ID_Producto' => $request->ID_Producto,
+            'Cantidad' => $request->Cantidad,
+            'Precio_Unitario' => $request->Precio_Unitario,
+        ]);
+
+        return redirect()->route('detalle_ventas.index');
     }
 
     /**

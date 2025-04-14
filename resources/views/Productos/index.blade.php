@@ -1,30 +1,33 @@
-@extends("layouts.app")
-@section("content")
+@extends('layouts.app')
 
-    <h1 class="alert alert-info">Lista de Productos</h1>
-    <table class="table table-bordered border-primary">
-        <thead>
-        <tr>
-            <th>ID_Producto</th>
-            <th>Nombre_Producto</th>
-            <th>Descripcion</th>
-            <th>Precio</th>
-            <th>Unidades_Stock</th>
-            <th>ID_Proveedor</th>
-        </tr>
-        </thead>
-        <tbody>
-        @foreach($productos as $productos)
+@section('content')
+    <div class="container mt-5">
+        <h2 class="alert alert-primary">Lista de Productos</h2>
+        <a href="{{ route('productos.create') }}" class="btn btn-success mb-3">Agregar Producto</a>
+
+        <table class="table table-bordered">
+            <thead>
             <tr>
-                <td>{{$productos->ID_Producto }}</td>
-                <td>{{$productos->Nombre_Producto }}</td>
-                <td>{{$productos->Descripcion }}</td>
-                <td>{{$productos->Precio }}</td>
-                <td>{{$productos->Unidades_Stock }}</td>
-                <td>{{$productos->ID_Proveedor }}</td>
+                <th>ID Producto</th>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Precio</th>
+                <th>Unidades en Stock</th>
+                <th>Proveedor</th>
             </tr>
-        @endforeach
-        </tbody>
-    </table>
-
+            </thead>
+            <tbody>
+            @foreach($productos as $producto)
+                <tr>
+                    <td>{{ $producto->ID_Producto }}</td>
+                    <td>{{ $producto->Nombre_Producto }}</td>
+                    <td>{{ $producto->Descripcion }}</td>
+                    <td>{{ $producto->Precio }}</td>
+                    <td>{{ $producto->Unidades_Stock }}</td>
+                    <td>{{ $producto->ID_Proveedor }}</td>
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
+    </div>
 @endsection
